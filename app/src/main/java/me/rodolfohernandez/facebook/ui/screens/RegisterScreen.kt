@@ -1,4 +1,4 @@
-package me.rodolfohernandez.facebook
+package me.rodolfohernandez.facebook.ui.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
@@ -23,7 +23,7 @@ import androidx.navigation.NavController
 @Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FacebookRegisterScreen(navController: NavController) {
+fun FacebookRegisterScreen(onClickBack : ()-> Unit) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var emailOrPhone by remember { mutableStateOf("") }
@@ -39,7 +39,7 @@ fun FacebookRegisterScreen(navController: NavController) {
                 title = { },
                 navigationIcon = {
                     IconButton(onClick = {
-                        navController.popBackStack()
+                        onClickBack()
 
                     }) {
                         Icon(
