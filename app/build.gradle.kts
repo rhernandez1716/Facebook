@@ -6,7 +6,7 @@ plugins {
 android {
     namespace = "me.rodolfohernandez.facebook"
     compileSdk {
-        version = release(36) {
+        version = release(37) {
             minorApiLevel = 1
         }
     }
@@ -55,4 +55,8 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     implementation ("androidx.compose.material:material-icons-extended")
+    val nav_version = "2.10.2"
+    // Jetpack Compose integration
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
 }

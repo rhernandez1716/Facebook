@@ -4,6 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import me.rodolfohernandez.facebook.ui.theme.FacebookTheme
 
 class MainActivity : ComponentActivity() {
@@ -11,8 +16,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            FacebookTheme {
-                FacebookLoginScreen()
+            val myNavController = rememberNavController()
+            NavHost(
+                navController = myNavController,
+                startDestination = "Login",
+                modifier = Modifier.fillMaxSize()
+            ) {
+                composable(route = "Login"){
+                    FacebookLoginScreen(navController = myNavController)
+                }
+                composable(route = "register"){
+                    FacebookRegisterScreen()
+                }
             }
         }
     }
